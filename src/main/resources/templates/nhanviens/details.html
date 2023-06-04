@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List Nhân Viên</title>
+  <th:block th:replace="~{layout::link-css}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{layout::header}"></th:block>
+<div class="container">
+
+
+    <div th:each="nhanVien:${nvById}">
+
+
+
+
+      <!--      <td th:text="" th:if="${nhanVien.phai == 'NU'}></td>-->
+      <div>
+        <img style="display: flex; justify-content: center" th:if="${nhanVien.phai == 'Nu'}" height="300px" width="500px" th:src="@{/images/otp.jpg}">
+
+
+        <img style="display: flex; justify-content: center" th:if="${nhanVien.phai == 'Nam'}"  height="300px" width="500px" th:src="@{/images/otp1.jpg}">
+
+      </div>
+      <h5 style="margin: 10px 0px"><strong>Tên nhân viên:</strong></h5>
+      <div th:text="${nhanVien.tenNv}"></div>
+      <h5 style="margin: 10px 0px"><strong>Mã nhân viên:</strong></h5>
+      <div th:text="${nhanVien.id}"></div>
+      <h5 style="margin: 10px 0px"><strong>Nơi sinh:</strong></h5>
+      <div th:text="${nhanVien.noisinh}"></div>
+      <h5 style="margin: 10px 0px"><strong>Tên Phòng:</strong></h5>
+      <div th:text="${nhanVien.phongban.tenphong}"></div>
+
+      <h5 style="margin: 10px 0px"><strong>Lương:</strong></h5>
+      <div th:text="${nhanVien.luong}"></div>
+
+      <div>
+        <a class="btn btn-outline-info" th:href="@{/nhanvien/edit/{id}(id=${nhanVien.id})}">Edit</a> |
+        <a class="btn btn-outline-danger"th:href="@{/nhanvien/delete/{id}(id=${nhanVien.id})}"
+           onclick="return confirm('Are you sure?')">Delete</a>
+      </div>
+    </div>
+
+</div>
+<th:block th:replace="~{layout :: footer}"></th:block>
+</body>
+</html>

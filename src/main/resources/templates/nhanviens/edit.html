@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:replace="layout::link-css"></th:block>
+    <title >Edit Product</title>
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<div class="container">
+    <h1>Edit Nhân viên</h1>
+    <form th:action="@{/nhanvien/edit}" th:object="${nv}"method="post"?>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="id" >Id: </label>
+            <input class="form-control" type="text" th:field="*{id}" id="id">
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="name" >Name: </label>
+            <input class="form-control" type="text" th:field="*{tenNv}" id="name">
+            <span class="text-danger" th:if="${#fields.hasErrors('tenNv')}" th:errors="*{tenNv}"></span>
+        </div>
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="name" >Phai: </label>
+            <input class="form-control" type="text" th:field="*{phai}" id="phai">
+            <span class="text-danger" th:if="${#fields.hasErrors('phai')}" th:errors="*{phai}"></span>
+        </div>
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="noisinh" >Noi sinh: </label>
+            <input class="form-control" type="text" th:field="*{noisinh}" id="noisinh">
+            <span class="text-danger" th:if="${#fields.hasErrors('noisinh')}" th:errors="*{noisinh}"></span>
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="maphong" >Ma phong: </label>
+            <input class="form-control" type="text" th:field="*{phongban.maphong}" id="maphong">
+
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="luong" >Luong: </label>
+            <input class="form-control" type="text" th:field="*{luong}" id="luong">
+            <span class="text-danger" th:if="${#fields.hasErrors('luong')}" th:errors="*{luong}"></span>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Save">
+    </form>
+    <br>
+    <a th:href="@{/nhanvien}">Back to List</a>
+</div>
+<th:block th:replace="layout :: footer"></th:block>
+</body>
+</html>
